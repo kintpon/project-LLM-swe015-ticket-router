@@ -129,8 +129,10 @@ if __name__ == "__main__":
     folder = model_dir("m3_bert", smoke)
     train, val = get_data(smoke)
     start = time.time()
+    set_seed()  # before new_model: the new classification head is random
     model, tok = new_model(BERT)
     best = train_model(model, tok, train, val, 1 if smoke else 3, 3e-5, folder)
+    model_dir("m3_train_logits.npy", smoke).unlink(missing_ok=True)  # cached teacher logits are stale now
     print(f"train time {time.time() - start:.0f} s on {DEVICE}, best val acc {best:.4f}")
     del model
     row, _ = evaluate("M3", "BERT-base (fp32)", make_predict_proba(folder), weight_files(folder), smoke)

@@ -124,7 +124,7 @@ def write_results(row, thr):
     th = json.loads(tpath.read_text()) if tpath.exists() else {}
     th[row["model"]] = thr
     tpath.write_text(json.dumps(th, indent=1))
-    lines = ["| Model | In-scope acc | OOS recall | Appliance acc (30 rows) | Threshold | Size (MB) | "
+    lines = ["| Model | In-scope acc | OOS recall | Appliance acc (15 rows) | Threshold | Size (MB) | "
              "Latency mean (ms) | Latency p95 (ms) |", "|---|---|---|---|---|---|---|---|"]
     for _, x in df.iterrows():
         lines.append(f"| {x['model']} {x['name']} | {x.in_scope_acc:.4f} | {x.oos_recall:.4f} | {x.appliance_acc:.4f} | "
@@ -132,5 +132,5 @@ def write_results(row, thr):
     notes = ("\n\nHardware: " + hardware_line() + "\n\nNotes: size = all files needed at inference, tokenizer files "
              "excluded. Latency = one message at a time, preprocess -> route, 10 warm-up calls then 200 test messages "
              "(same for all models). Metrics are measured on the models alone (small-talk rules not applied). "
-             "Appliance accuracy covers only 30 test rows, so treat it with caution.\n")
+             "Appliance accuracy covers only 15 test rows (3 per appliance intent), so treat it with caution.\n")
     (RESULTS_DIR / "results.md").write_text("\n".join(lines) + notes, encoding="utf-8")

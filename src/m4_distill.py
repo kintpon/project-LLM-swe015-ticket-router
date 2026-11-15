@@ -36,6 +36,7 @@ if __name__ == "__main__":
     train, val = m3.get_data(smoke)
     start = time.time()
     t_logits = teacher_logits(train, smoke)
+    m3.set_seed()  # before new_model: the new classification head is random
     model, tok = m3.new_model(STUDENT)
     best = m3.train_model(model, tok, train, val, 1 if smoke else EPOCHS, LR, folder, t_logits, T)
     print(f"train time {time.time() - start:.0f} s on {m3.DEVICE}, best val acc {best:.4f}")

@@ -76,3 +76,10 @@
 - Why: spec Sections 3-4. The default ONNX exporter fixed the batch size to 1 and crashed on the full test set, so I used the legacy exporter (dynamo=False), which the spec allows. Student lr 5e-5 is my choice.
 - Files: src/m3_bert.py (+137), src/m4_distill.py (+44), src/m4_quantize.py (+59), docs/decisions.md (D12)
 - Result (results/results.csv): M3 in-scope 0.9094, oos 0.8720, 438.4 MB, 61.43 ms | M3s 0.9079, 0.9100, 268.3 MB, 31.76 ms | M4 0.8930, 0.9320, 67.5 MB, 12.01 ms. M4 vs M3s agree 0.9686 (logs/m4_quantize_001.log). pytest 15 passed.
+
+## 2026-11-15 21:36 · P2/P3 · Bug hunt in P2 and P3 (user request), 4 small fixes
+- What: read m2_ffn, evaluate, m3_bert, m4_distill, m4_quantize; ran a read-only diagnostic on the appliance rows. Fixed: (1) results.md said 30 appliance test rows, real count is 15; (2) set_seed now runs before new_model (the classifier head was created unseeded); (3) m3_bert deletes the cached teacher logits after training so the student never distills from an old teacher; (4) M2 log shows the epoch mean loss, not the last batch.
+- Why: user asked for a review and approved all four fixes. No model was retrained, so results.csv is unchanged; the existing M3/M3s rows come from a run with an unseeded head.
+- Finding (not a code bug): appliance_acc 0.0 is real. Diagnostic output: M3 raw argmax acc 0.000 on the 15 appliance test rows (max conf 0.280); M3s 0.667 and M4 0.667 raw, but mean conf 0.220 / 0.194 < threshold 0.65, so all go to Human agent. Labels are contiguous (156), teacher cache has 15315 rows, no message is cut at 32 tokens.
+- Files: src/evaluate.py, src/m2_ffn.py, src/m3_bert.py, src/m4_distill.py, results/results.md (rebuilt by write_results)
+- Result: pytest 15 passed; M2 smoke runs. Question on the appliance classes asked, answer pending.

@@ -68,14 +68,16 @@ def train(smoke=False, rows=None):
     for epoch in range(1 if smoke else 200):
         net.train()
         order = torch.randperm(len(x_train))
+        total = 0.0
         for i in range(0, len(order), 64):
             idx = order[i:i + 64]
             opt.zero_grad()
             loss = loss_fn(net(x_train[idx]), y_train[idx])
             loss.backward()
             opt.step()
+            total += loss.item() * len(idx)
         val_acc = accuracy(net, x_val, y_val)
-        log("m2", f"epoch {epoch + 1} loss {loss.item():.4f} val_acc {val_acc:.4f}")
+        log("m2", f"epoch {epoch + 1} loss {total / len(order):.4f} val_acc {val_acc:.4f}")  # mean loss of the epoch
         if val_acc > best_acc:
             best_acc, bad_epochs = val_acc, 0
             best_state = {k: v.clone() for k, v in net.state_dict().items()}
