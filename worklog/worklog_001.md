@@ -112,3 +112,8 @@
 - Why: weights are not on HF yet, so the app files from models/ were copied in (no smoke/, logits, fp32 ONNX); data/splits were rebuilt from the HF dataset in the clone
 - Result: app served on port 7861; dishwasher example via gradio_client gave Human agent, not_draining, 0.231, dishwaher -> dishwasher, DW-6534 (same as main env); pytest 27 passed
 - Open (user): huggingface-cli login + scripts/upload_weights.py, git push; HF download path tested in P6b
+
+## 2026-11-15 23:23 · P5 · Session end
+- What: P5 finished and committed (b14c13f docs/scripts, 82dab0c fresh-env check); session closed by user
+- Next: P6a code review (docs/code_review.md). User to do first: huggingface-cli login + python scripts/upload_weights.py, git push
+- Note: old app.py server still running on port 7860 (user stops it)
