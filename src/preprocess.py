@@ -28,7 +28,8 @@ def correct_token(token, vocab):
     if len(token) < 5 or token in vocab or token in LEXICON:
         return token  # guard: short or known words ("over", "even") are never touched
     best = min(LEXICON, key=lambda w: levenshtein(token, w))
-    return best if levenshtein(token, best) <= 2 else token
+    max_dist = 2 if len(best) >= 8 else 1  # 2 edits on a short word like "oven" would change half of it
+    return best if levenshtein(token, best) <= max_dist else token
 
 
 @lru_cache(maxsize=1)

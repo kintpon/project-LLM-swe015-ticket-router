@@ -27,6 +27,9 @@ def test_over_oven_guard():
     assert correct_token("even", VOCAB) == "even"
     assert correct_token("ovn", VOCAB) == "ovn"      # under 5 letters: never corrected
     assert correct_token("dishwaser", VOCAB) == "dishwasher"
+    assert correct_token("washin", VOCAB) == "washing"      # distance 1 on a short word: corrected
+    assert correct_token("flashing", VOCAB) == "flashing"   # distance 2 to "washing": left alone
+    assert correct_token("drawer", VOCAB) == "drawer"       # distance 2 to "dryer": left alone
 
 
 def test_preprocess_corrections_and_edge_inputs():

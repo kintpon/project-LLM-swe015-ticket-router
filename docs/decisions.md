@@ -17,3 +17,6 @@ Context: messages the model is unsure about should go to a person. Options: alwa
 
 ## D6 · Small data clean-up and spelling vocabulary
 Context: CLINC has 2 train/test and 3 train/val exact duplicates; the spelling guard needs a training vocabulary. Decision: drop the duplicates from train; vocabulary = all words of the CLINC train rows (appliance rows excluded because they contain deliberate typos). Consequence: test is clean; real English words are protected and appliance typos stay correctable. (First version used 'seen >=4 times' plus extra lexicon words; a bug hunt showed it corrupted 53 real words on val+test, so it was reverted.)
+
+## D7 · Spelling distance: <=1 for short lexicon words (deviation from the spec's "<=2")
+Context: with distance <=2 everywhere, 20 real words on CLINC val+test were "corrected" (lover->oven, warning->washing) and two in the appliance data (flashing->washing, drawer->dryer). Options: keep <=2 as in CLAUDE.md; or <=1 when the lexicon word has fewer than 8 letters, <=2 for long ones. Decision (user): <=1 for short words. Consequence: wrong corrections 20 -> 4, real typos (dishwaser, washin, machin, refridgerator) still fixed; swapped letters (frigde) are no longer corrected.

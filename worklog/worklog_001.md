@@ -45,3 +45,9 @@
 - Why: (1) was caused by my own additions in P1 (extra lexicon words, count>=4 vocab), measured before and after; alternative d<=1 for short words changes the spec, so it is asked to the user.
 - Files: src/preprocess.py, src/rules.py, src/evaluate.py, src/m1_tfidf.py, src/logutil.py, tests/ (+3 tests)
 - Result: pytest 14 passed. M1 retrained (results/results.csv): in-scope 0.7991, oos recall 0.9080, thr 0.45, 40.9 MB, 1.01 ms. The earlier M1 row (0.7973) is replaced.
+
+## 2026-11-15 16:05 · P1 · Question: spelling distance for short words (user chose <=1)
+- What: asked whether to keep "distance <=2" from CLAUDE.md or use <=1 for lexicon words shorter than 8 letters. User chose <=1 for short words. One line changed in correct_token; M1 retrained.
+- Why: 2 edits on a 4-5 letter word change half of it (lover->oven, drawer->dryer, flashing->washing); alternative was to keep <=2 and report 20 wrong corrections.
+- Files: src/preprocess.py, tests/test_basic.py
+- Result: wrong corrections on CLINC val+test 20 -> 4 (refrigerated, ridge, microwaves); appliance typos still fixed; pytest 14 passed. M1 (results/results.csv): in-scope 0.7980, oos recall 0.9070, thr 0.45, 40.9 MB, 0.43 ms.
