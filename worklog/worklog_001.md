@@ -64,3 +64,9 @@
 
 ## 2026-11-15 16:13 · P1 · Correction: my earlier spelling numbers included test rows
 - What: the 53 -> 20 -> 4 wrong-correction counts I used to pick distance <=1 were measured on val+test, so I looked at test rows while tuning the rule. Recomputed on train+val only: 2 wrong corrections. The distance rule itself was already approved by the user (D7) and is unchanged; test is no longer used for this.
+
+## 2026-11-15 16:17 · P2 · M2 word2vec + MLP and pipeline test
+- What: wrote src/m2_ffn.py (word2vec dim 100 -> mean vector -> MLP, manual SGD loop, early stopping), ran --smoke then the full run (~16 s). Wrote tests/test_pipeline.py (M1 on 300 rows, evaluate twice -> one row, writes to a temp folder).
+- Why: spec Section 3. Chose lr 0.1 / batch 64 / patience 15 myself (hyperparameters within spec). Test column name was "model" not "key": fixed.
+- Files: src/m2_ffn.py (+110), tests/test_pipeline.py (+18), docs/decisions.md (D11)
+- Result (results/results.csv): M2 in-scope 0.6726, oos recall 0.877, appliance 0.1333, threshold 0.9, 2.63 MB, latency 0.143 ms mean, 0.362 ms p95. pytest: 15 passed.

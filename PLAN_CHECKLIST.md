@@ -18,10 +18,10 @@ Kaynak: "SWE015 Ödevi – Proje Planı.pdf". Bir madde gerçekten çalıştığ
 - [x] İlk karar kayıtları docs/decisions.md dosyasına yazıldı
 
 ## P2 · Kendi sinir ağımız (M2)
-- [ ] word2vec eğitildi
-- [ ] MLP, elle yazılmış SGD döngüsüyle eğitildi
-- [ ] M2 sonuç tablosuna girdi
-- [ ] Uçtan uca test (test_pipeline.py) geçiyor: aynı model iki kez ölçülünce tabloda tek satır kalıyor
+- [x] word2vec eğitildi
+- [x] MLP, elle yazılmış SGD döngüsüyle eğitildi
+- [x] M2 sonuç tablosuna girdi
+- [x] Uçtan uca test (test_pipeline.py) geçiyor: aynı model iki kez ölçülünce tabloda tek satır kalıyor
 
 ## P3 · Transformer, distillation ve quantization (M3, M3s, M4)
 - [ ] M3: BERT fine-tune edildi (Colab ya da CPU)

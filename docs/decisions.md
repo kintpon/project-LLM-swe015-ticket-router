@@ -29,3 +29,9 @@ Context: CLAUDE.md says "not in the training vocabulary"; the appliance training
 
 ## D10 · 10 teams instead of "about 8" (user decision)
 Context: CLAUDE.md says about 8 teams; teams.py has 10 (5 CLINC domain teams, Technical Service, Spare Parts, Warranty, Auto reply, Human agent). Decision (user): keep 10. Consequence: none for metrics; the team table is only used for display and routing.
+
+## D11 M2 = word2vec mean-pooling + MLP (P2)
+- Context: the spec asks for an own neural net on word vectors.
+- Options: mean of word vectors (spec), LSTM over the sequence, fastText.
+- Decision: gensim word2vec (dim 100, 30 epochs, trained on preprocessed train texts) -> mean vector -> MLP 100-256-n_classes, hand-written SGD loop (lr 0.1, momentum 0.9, batch 64, early stopping patience 15 on val accuracy).
+- Consequence: tiny and fast (2.6 MB, 0.14 ms) but word order is lost, so it is weaker than M1 in-scope; lr/epochs/patience are my choices inside the spec.
