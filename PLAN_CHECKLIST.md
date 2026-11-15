@@ -8,14 +8,14 @@ Kaynak: "SWE015 Ödevi – Proje Planı.pdf". Bir madde gerçekten çalıştığ
 - [x] İlk çalışma günlüğü kaydı (worklog_001.md) ve PROGRESS.md açıldı
 
 ## P1 · Veri, ön işleme ve klasik model (M1)
-- [ ] CLINC150 indirildi, 100 beyaz eşya mesajı eklendi, bölümler data/splits/ altına kaydedildi
-- [ ] teams.py: her niyetin bir ekibi var
-- [ ] Ön işleme: regex temizleme, model kodu çıkarma, Levenshtein ile yazım düzeltme
-- [ ] ELIZA tarzı küçük konuşma kuralları
-- [ ] Ortak değerlendirme fonksiyonu (evaluate.py) ve tests/test_basic.py testleri geçiyor
-- [ ] M1 (tf-idf + lojistik regresyon) eğitildi ve sonuç tablosuna girdi
-- [ ] Veri bütünlüğü testleri (test_data.py) geçiyor: eğitim ve test verisi çakışmıyor
-- [ ] İlk karar kayıtları docs/decisions.md dosyasına yazıldı
+- [x] CLINC150 indirildi, 100 beyaz eşya mesajı eklendi, bölümler data/splits/ altına kaydedildi
+- [x] teams.py: her niyetin bir ekibi var
+- [x] Ön işleme: regex temizleme, model kodu çıkarma, Levenshtein ile yazım düzeltme
+- [x] ELIZA tarzı küçük konuşma kuralları
+- [x] Ortak değerlendirme fonksiyonu (evaluate.py) ve tests/test_basic.py testleri geçiyor
+- [x] M1 (tf-idf + lojistik regresyon) eğitildi ve sonuç tablosuna girdi
+- [x] Veri bütünlüğü testleri (test_data.py) geçiyor: eğitim ve test verisi çakışmıyor
+- [x] İlk karar kayıtları docs/decisions.md dosyasına yazıldı
 
 ## P2 · Kendi sinir ağımız (M2)
 - [ ] word2vec eğitildi

@@ -8,3 +8,34 @@
 - What: asked how to tick PDF boxes (draw on PDF vs separate checklist). User chose a separate checklist file.
 - Why: avoids installing reportlab; PLAN_CHECKLIST.md is tracked in the project.
 - Files: PLAN_CHECKLIST.md
+
+## 2026-11-15 15:51 · P1 · Wrote data/appliance.csv
+- What: 100 appliance-support messages, 5 intents x 20, varied wording/length, model codes and typos in some.
+- Why: homework allows domain data; hand-written (AI-assisted) so wording differs between rows.
+- Files: data/appliance.csv (+101 lines)
+
+## 2026-11-15 15:52 · P1 · data.py + teams.py
+- What: src/data.py builds splits (CLINC plus + appliance 14/3/3) to data/splits/*.parquet; src/teams.py maps every intent to a team.
+- Why: found 2 train/test and 3 train/val exact duplicate texts in CLINC; removed them from train so the test is clean (alternative: keep and fail the no-overlap check).
+- Files: src/data.py, src/teams.py
+- Result: python -m src.data printed train/val/test sizes and 156 classes (see run output).
+
+## 2026-11-15 15:52 · P1 · preprocess.py + rules.py
+- What: preprocess (code extraction, lowercase, url/email tokens, repeat squeeze, own Levenshtein spelling fix, whitespace) and 5 ELIZA-style rules.
+- Why: lexicon correction only for tokens >=5 letters, not in vocab, distance <=2 (keeps "over"/"even" safe); rules stay app-only so model comparison is fair.
+- Files: src/preprocess.py, src/rules.py
+
+## 2026-11-15 15:55 · P1 · evaluate.py + M1 trained and evaluated
+- What: src/evaluate.py (route, threshold on val, metrics, size, latency, results.csv/md/thresholds.json), src/m1_tfidf.py (tf-idf 1-2gram + LogReg C=10), smoke then full run.
+- Why: one shared evaluate() so all models are measured the same way; vocab for the spelling guard = train words seen >=4 times, so typos that occur 1-3 times in train stay correctable.
+- Files: src/evaluate.py, src/m1_tfidf.py, src/preprocess.py (get_vocab)
+- Result (results/results.csv): M1 in-scope 0.7973, oos recall 0.9110, appliance acc 0.0, threshold 0.45, 40.8 MB, latency mean 0.45 ms.
+
+## 2026-11-15 15:55 · P1 · Finding: M1 appliance accuracy is 0.0
+- What: inspected predictions: M1 often names the right appliance intent but with confidence 0.1-0.2 (only 14 train rows per appliance class), below threshold 0.45, so they are routed to Human agent.
+- Why: not a bug; threshold was tuned on val where CLINC rows dominate. Reported as is, no tuning to hide it.
+- Result: noted for the report; M2/M3 will show whether this changes.
+
+## 2026-11-15 15:55 · P1 · Tests
+- What: tests/test_basic.py (6 tests) and tests/test_data.py (6 tests).
+- Result: pytest -q -> 12 passed; every intent has a team (156 classes, 10 teams).

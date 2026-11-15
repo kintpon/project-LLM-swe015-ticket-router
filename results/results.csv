@@ -1,0 +1,2 @@
+model,name,in_scope_acc,oos_recall,appliance_acc,threshold,size_mb,latency_mean_ms,latency_p95_ms
+M1,tf-idf + LogReg,0.7973421926910299,0.911,0.0,0.45,40.788675,0.44703049963572994,0.6820050039095801

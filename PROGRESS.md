@@ -1,11 +1,13 @@
 # PROGRESS
-Phase: P0 done, next P1 | Worklog: worklog/worklog_001.md | Checklist: PLAN_CHECKLIST.md
+Phase: P1 done, next P2 (M2) | Worklog: worklog/worklog_001.md | Checklist: PLAN_CHECKLIST.md
 Env: Windows 11, i7-12700H 14c/20t, 31.8 GB RAM, RTX 3060 Laptop (CUDA ok), Python 3.12.13 (.venv via uv), torch 2.11.0+cu128
 
 ## Decisions
-- Python 3.12 venv (system 3.14 too new for wheels); CUDA torch since GPU found
-- Plan ticks kept in PLAN_CHECKLIST.md (user choice), PDF untouched
-- Token file "claude için token kodları.txt" is gitignored; never read or used
+- Python 3.12 venv; CUDA torch since GPU found; latency still measured on CPU, 4 threads
+- Plan ticks in PLAN_CHECKLIST.md (user choice), PDF untouched; token file gitignored, never read
+- Dropped 5 exact-duplicate texts from train; spelling vocab = train words seen >=4 times
+- M1 appliance acc is 0.0 (low confidence -> Human agent); reported as is
 
 ## File map
-config.py (paths, seed, repo names) | src/logutil.py (rolling logger) | requirements.txt | docs/decisions.md
+config.py | src/logutil.py (rolling log) | src/data.py (splits) | src/teams.py | src/preprocess.py | src/rules.py
+src/evaluate.py (shared eval) | src/m1_tfidf.py | tests/test_basic.py, test_data.py | docs/decisions.md | data/appliance.csv

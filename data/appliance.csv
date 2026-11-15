@@ -1,0 +1,101 @@
+text,intent
+my dishwasher DW-6534 is not draining and the water stays at the bottom,not_draining
+washing machine wont drain after the rinse cycle,not_draining
+there is standing water in my dishwaser after every wash,not_draining
+the sink keeps filling when my WM-2210 spins,not_draining
+water is stuck in the drum and will not go out,not_draining
+dishwasher full of dirty water at the end of the cycle help,not_draining
+drain pump seems dead and the machine does not empty,not_draining
+my refridgerator defrost water is not draining and leaks on the floor,not_draining
+washer drain hose is clogged i think and nothing drains,not_draining
+why is there still water in my washing machin after it finishes,not_draining
+The dishwasher model DW-6534 leaves a puddle inside and never drains it,not_draining
+not draining,not_draining
+my dryer condensate tank is full and the water will not go away,not_draining
+after the spin cycle the water is still there,not_draining
+ive cleaned the filter but my dishwasher still does not empty,not_draining
+water backs up into the dishwasher from the sink drain,not_draining
+washing machine stops mid cycle with a full drum of water,not_draining
+Hello the drain on my WD-90412 does not work it just fills up and stays full,not_draining
+sluggish draining on my washer and it takes hours to empty,not_draining
+my dishwasher makes a humming noise but the water doesnt go down,not_draining
+my oven OV-4410 is not heating up at all,not_heating
+the dishwasher does not heat the water so dishes are cold and greasy,not_heating
+oven stays cold even at 200 degrees,not_heating
+dryer runs but the clothes come out wet and cold,not_heating
+my microwave spins but the food stays cold,not_heating
+washing machine doesnt heat water for the hot cycle,not_heating
+the heating element in my ovn seems broken,not_heating
+stove burner wont get hot,not_heating
+why is my dryer not heating,not_heating
+oven fan works but no heat comes out model FO-7720,not_heating
+my tumble dryer takes forever to dry and there is no warmth,not_heating
+not heating,not_heating
+dishwasher dry cycle is cold and the plates are still wet,not_heating
+the oven takes an hour to reach 180 and never gets hotter,not_heating
+no hot water in my washin machine even on the 60 degree program,not_heating
+my microwave MW-3305 runs for five minutes and the soup is still ice cold,not_heating
+oven preheat never finishes and the light just blinks,not_heating
+i think the thermostat is faulty because my oven is only lukewarm,not_heating
+the heater of my dryer DR-5521 does not work anymore,not_heating
+only cold air comes out of the dryer please advise,not_heating
+my dishwasher shows error E24 what does it mean,error_code
+washing machine displays F21 and stops,error_code
+error code E4 on my WM-2210,error_code
+oven shows F3 on the display and beeps,error_code
+what does code E15 mean on a dishwasher,error_code
+the dryer screen says err 05,error_code
+fridge is flashing error code E1 model RF-8800,error_code
+display shows H20 on my washin machine,error_code
+getting an error on the panel something like E-61,error_code
+code 5E on the washer please help,error_code
+E09 error keeps appearing after restart,error_code
+error code,error_code
+my oven OV-4410 shows an F7 error,error_code
+what is the meaning of the code UE on my washing machine,error_code
+the lights on the dishwasher flash 3 times which error is that,error_code
+microwave says ERR 3 and wont start,error_code
+can you tell me what E22 means,error_code
+dryer DR-5521 error check filter keeps coming back,error_code
+F09 on dishwaser display and i cannot start a program,error_code
+control panel shows LE what do i do,error_code
+I need to order a new door gasket for my DW-6534,spare_part_order
+where can i buy a replacement filter for my dishwasher,spare_part_order
+looking for a drain pump for washing machine WM-2210,spare_part_order
+i want to order spare parts the heating element for my oven,spare_part_order
+do you sell door handles for refrigerators,spare_part_order
+need a new shelf for my fridge model RF-8800,spare_part_order
+ordering a belt for my dryer,spare_part_order
+how much is a replacement rack for the dishwaser,spare_part_order
+spare part,spare_part_order
+can i get a new glass tray for my microwave,spare_part_order
+please send me a price for a thermostat OV-4410,spare_part_order
+i would like to buy two spare spray arms,spare_part_order
+which part number is the door seal for WD-90412,spare_part_order
+where do i order a new knob for my oven,spare_part_order
+need a replacement lint filter for the dryer DR-5521,spare_part_order
+do you have the water inlet valve in stock,spare_part_order
+how can i purchase a new drawer for my freezer,spare_part_order
+ordering replacement hinges for my fridge door,spare_part_order
+the drum bearing of my washin machine i want to order the part,spare_part_order
+send me the catalogue of spare parts for microwaves,spare_part_order
+i want to make a warranty claim for my dishwasher,warranty_claim
+is my WM-2210 still under warranty,warranty_claim
+my fridge broke after 8 months is it covered,warranty_claim
+how do i claim the guarantee on my oven,warranty_claim
+warranty expired last week can you still help,warranty_claim
+need to register a warranty claim and the purchase receipt is attached,warranty_claim
+what does the warranty cover for the dryer,warranty_claim
+the machine is 2 years old and the motor failed claim please,warranty_claim
+warranty,warranty_claim
+can i extend the warranty of my dishwaser,warranty_claim
+file a claim for faulty microwave MW-3305 under guarantee,warranty_claim
+who pays the repair if the washing machine is in warranty,warranty_claim
+where do i find the serial number for the warranty claim,warranty_claim
+i bought my freezer in march and it stopped working i want it replaced under warranty,warranty_claim
+do you honor the warranty if i bought it second hand,warranty_claim
+how long is the guarantee on FO-7720,warranty_claim
+my warranty card is lost can i still claim,warranty_claim
+the oven door glass cracked on its own is that a warranty case,warranty_claim
+hello i would like to know the warranty conditions,warranty_claim
+please start a warranty case for DR-5521,warranty_claim
