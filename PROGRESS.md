@@ -7,8 +7,10 @@ Env: Windows 11, i7-12700H 14c/20t, 31.8 GB RAM, RTX 3060 Laptop (CUDA ok), Pyth
 - Plan ticks in PLAN_CHECKLIST.md (user choice), PDF untouched; token file gitignored, never read
 - Dropped 5 exact-duplicate texts from train; spelling vocab = CLINC train words; smoke runs save to models/smoke/
 - Spelling: distance <=1 for lexicon words <8 letters, <=2 for longer (user choice, D7)
+- User-approved deviations: D7 spelling <=1 short words, D8 5 dup rows out of train, D9 vocab = CLINC train only, D10 10 teams. Ask BEFORE any new deviation from CLAUDE.md
+- Spelling rules judged on train+val only (never test). README gets data-checks block from scripts/data_checks.py
 - M1 appliance acc is 0.0 (low confidence -> Human agent); reported as is
 
 ## File map
 config.py | src/logutil.py (rolling log) | src/data.py (splits) | src/teams.py | src/preprocess.py | src/rules.py
-src/evaluate.py (shared eval) | src/m1_tfidf.py | tests/test_basic.py, test_data.py | docs/decisions.md | data/appliance.csv
+src/evaluate.py (shared eval) | src/m1_tfidf.py | tests/test_basic.py, test_data.py | docs/decisions.md | data/appliance.csv | scripts/data_checks.py

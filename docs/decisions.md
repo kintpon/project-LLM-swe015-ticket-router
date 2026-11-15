@@ -20,3 +20,12 @@ Context: CLINC has 2 train/test and 3 train/val exact duplicates; the spelling g
 
 ## D7 · Spelling distance: <=1 for short lexicon words (deviation from the spec's "<=2")
 Context: with distance <=2 everywhere, 20 real words on CLINC val+test were "corrected" (lover->oven, warning->washing) and two in the appliance data (flashing->washing, drawer->dryer). Options: keep <=2 as in CLAUDE.md; or <=1 when the lexicon word has fewer than 8 letters, <=2 for long ones. Decision (user): <=1 for short words. Consequence: wrong corrections 20 -> 4, real typos (dishwaser, washin, machin, refridgerator) still fixed; swapped letters (frigde) are no longer corrected.
+
+## D8 · The 5 duplicate CLINC rows (user decision: remove from train, keep val/test official)
+Context: 2 texts appear in train and test, 3 in train and val (exact match). CLAUDE.md says "official splits" and also forbids train/test overlap. Options: remove them from train; keep official splits and narrow the overlap test. Decision (user): remove from train. Also report overlaps after preprocessing and for val/test. Consequence: train 15,315 rows; scripts/data_checks.py shows 0 raw overlaps but 15 / 12 / 5 (train-test / train-val / val-test) after preprocessing, which are near-duplicates that differ only in case, punctuation or model codes; they are reported in the README, not removed.
+
+## D9 · Spelling vocabulary from CLINC train rows only (user decision)
+Context: CLAUDE.md says "not in the training vocabulary"; the appliance training rows contain deliberate typos. Decision (user): vocabulary = CLINC train rows only; spelling rules are judged on train and val only, never on test. Consequence: appliance typos are still corrected; on train+val CLINC rows 2 tokens are wrongly corrected (refrigerated -> refrigerator, ridge -> fridge), listed as a limitation in the README. Note: the earlier counts used to pick the distance rule (D7) included test rows; they were recomputed without test.
+
+## D10 · 10 teams instead of "about 8" (user decision)
+Context: CLAUDE.md says about 8 teams; teams.py has 10 (5 CLINC domain teams, Technical Service, Spare Parts, Warranty, Auto reply, Human agent). Decision (user): keep 10. Consequence: none for metrics; the team table is only used for display and routing.
