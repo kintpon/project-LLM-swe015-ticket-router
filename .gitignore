@@ -1,0 +1,10 @@
+.venv/
+models/
+data/splits/
+logs/
+__pycache__/
+.pytest_cache/
+*.pyc
+# secrets / personal files
+claude için token kodları.txt
+*.pdf
