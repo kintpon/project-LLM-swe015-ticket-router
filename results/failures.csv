@@ -1,0 +1,11 @@
+text,true,predicted,confidence,routed_to
+where can i buy a replacement filter for my dishwasher,spare_part_order,oos,0.2268,Human agent
+give me an eta on when i will arrive at my destination,distance,flight_status,0.3403,Human agent
+please note vacuuming on my to do list,todo_list_update,todo_list_update,0.488,Human agent
+am i close to arriving at the post office,distance,directions,0.4565,Human agent
+can i reserve tables at the new york restaurant,accept_reservations,restaurant_reservation,0.4892,Human agent
+"my favorite, beef tacos at the buffet",restaurant_reviews,meal_suggestion,0.2166,Human agent
+what do you think about me calling you cora,change_ai_name,change_ai_name,0.5607,Human agent
+how many points do i have to cash,redeem_rewards,redeem_rewards,0.4675,Human agent
+when will i get to orlando,distance,distance,0.5519,Human agent
+is it possible i have a meeting with kim today,meeting_schedule,meeting_schedule,0.4918,Human agent

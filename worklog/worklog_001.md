@@ -83,3 +83,15 @@
 - Finding (not a code bug): appliance_acc 0.0 is real. Diagnostic output: M3 raw argmax acc 0.000 on the 15 appliance test rows (max conf 0.280); M3s 0.667 and M4 0.667 raw, but mean conf 0.220 / 0.194 < threshold 0.65, so all go to Human agent. Labels are contiguous (156), teacher cache has 15315 rows, no message is cut at 32 tokens.
 - Files: src/evaluate.py, src/m2_ffn.py, src/m3_bert.py, src/m4_distill.py, results/results.md (rebuilt by write_results)
 - Result: pytest 15 passed; M2 smoke runs. Question on the appliance classes asked, answer pending.
+
+## 2026-11-15 22:23 · P4 · Started P4 (paused by user), wrote make_report.py and app.py
+- What: wrote src/make_report.py (failures.csv = 10 seeded-random wrong M4 test predictions; accuracy_vs_latency.png = latency log-scale vs in-scope accuracy) and app.py (Gradio Blocks: rules first, M4 decides route, all 5 models in a side-by-side table, empty input prompt, 500-char truncation, HF download if models/ missing). Appliance question answered "leave as is": demo example 2 stays an appliance sentence with typo + model code.
+- Why: user asked to start P4; then said stop. Not done yet: app.py was never run, tests/test_app.py not written, no commit, PROGRESS.md and checklist not updated, P4 is NOT done.
+- Files: src/make_report.py (new), app.py (new), results/failures.csv, results/accuracy_vs_latency.png
+- Result: make_report printed "failures.csv written (10 of 551 wrong M4 predictions), accuracy_vs_latency.png written". Rows sent to Human agent by low confidence also count as wrong in failures.csv (routed_to column shows it).
+
+## 2026-11-15 22:46 · P4 · App verified, tests/test_app.py, P4 done
+- What: called app.handle on the 4 examples plus empty, spaces, only a model code, a Turkish sentence and a 2,400-char text: no crash, every case returns a route; empty input makes no model call. Wrote tests/test_app.py (13 cases, skipped if models/ is missing). Started `python app.py`: HTTP 200 on port 7860.
+- Why: spec P4 done check. No code change in app.py was needed.
+- Files: tests/test_app.py (+36)
+- Result: pytest 27 passed. Examples (M4): savings balance -> Banking & Cards 0.816; dishwasher typo + DW-6534 -> not_draining 0.231 -> Human agent (low confidence, known appliance finding, left as is); football -> oos -> Human agent; "hello there" -> Auto reply by rules.

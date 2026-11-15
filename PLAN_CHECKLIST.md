@@ -31,11 +31,11 @@ Kaynak: "SWE015 Ödevi – Proje Planı.pdf". Bir madde gerçekten çalıştığ
 - [x] Üç model de sonuç tablosuna girdi
 
 ## P4 · Uygulama
-- [ ] Gradio arayüzü açılıyor
-- [ ] Dört örnek cümle de mantıklı sonuç veriyor
-- [ ] Uygulama quantize modeli (M4) çalıştırıyor, dört modeli yan yana gösteriyor
-- [ ] failures.csv ve doğruluk–gecikme grafiği üretildi
-- [ ] Zor girdiler çökmüyor: boş metin, yalnızca model kodu, Türkçe cümle, çok uzun metin
+- [x] Gradio arayüzü açılıyor
+- [x] Dört örnek cümle de mantıklı sonuç veriyor
+- [x] Uygulama quantize modeli (M4) çalıştırıyor, dört modeli yan yana gösteriyor
+- [x] failures.csv ve doğruluk–gecikme grafiği üretildi
+- [x] Zor girdiler çökmüyor: boş metin, yalnızca model kodu, Türkçe cümle, çok uzun metin
 
 ## P5 · Dokümanlar ve teslime hazırlık
 - [ ] Mimari diyagram yazıldı ve kodla karşılaştırıldı
