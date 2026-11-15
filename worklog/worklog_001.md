@@ -70,3 +70,9 @@
 - Why: spec Section 3. Chose lr 0.1 / batch 64 / patience 15 myself (hyperparameters within spec). Test column name was "model" not "key": fixed.
 - Files: src/m2_ffn.py (+110), tests/test_pipeline.py (+18), docs/decisions.md (D11)
 - Result (results/results.csv): M2 in-scope 0.6726, oos recall 0.877, appliance 0.1333, threshold 0.9, 2.63 MB, latency 0.143 ms mean, 0.362 ms p95. pytest: 15 passed.
+
+## 2026-11-15 16:57 · P3 · M3 BERT, M3s DistilBERT (distillation), M4 INT8 ONNX
+- What: wrote src/m3_bert.py (hand loop, AdamW, best epoch on val), src/m4_distill.py (cached teacher logits, T=2, 5 ep), src/m4_quantize.py (ONNX export + quantize_dynamic QInt8). Ran --smoke then full runs on the local RTX 3060 (no Colab needed, ~4 min each, under the 30 min limit the user set).
+- Why: spec Sections 3-4. The default ONNX exporter fixed the batch size to 1 and crashed on the full test set, so I used the legacy exporter (dynamo=False), which the spec allows. Student lr 5e-5 is my choice.
+- Files: src/m3_bert.py (+137), src/m4_distill.py (+44), src/m4_quantize.py (+59), docs/decisions.md (D12)
+- Result (results/results.csv): M3 in-scope 0.9094, oos 0.8720, 438.4 MB, 61.43 ms | M3s 0.9079, 0.9100, 268.3 MB, 31.76 ms | M4 0.8930, 0.9320, 67.5 MB, 12.01 ms. M4 vs M3s agree 0.9686 (logs/m4_quantize_001.log). pytest 15 passed.

@@ -24,11 +24,11 @@ Kaynak: "SWE015 Ödevi – Proje Planı.pdf". Bir madde gerçekten çalıştığ
 - [x] Uçtan uca test (test_pipeline.py) geçiyor: aynı model iki kez ölçülünce tabloda tek satır kalıyor
 
 ## P3 · Transformer, distillation ve quantization (M3, M3s, M4)
-- [ ] M3: BERT fine-tune edildi (Colab ya da CPU)
-- [ ] M3s: DistilBERT, BERT'ten distillation ile eğitildi
-- [ ] M4: öğrenci model ONNX'e aktarıldı ve INT8 quantize edildi
-- [ ] M4 dosyası M3s'den küçük; ikisinin tahminleri en az %90 örtüşüyor
-- [ ] Üç model de sonuç tablosuna girdi
+- [x] M3: BERT fine-tune edildi (Colab ya da CPU)
+- [x] M3s: DistilBERT, BERT'ten distillation ile eğitildi
+- [x] M4: öğrenci model ONNX'e aktarıldı ve INT8 quantize edildi
+- [x] M4 dosyası M3s'den küçük; ikisinin tahminleri en az %90 örtüşüyor
+- [x] Üç model de sonuç tablosuna girdi
 
 ## P4 · Uygulama
 - [ ] Gradio arayüzü açılıyor

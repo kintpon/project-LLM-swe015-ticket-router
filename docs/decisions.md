@@ -35,3 +35,9 @@ Context: CLAUDE.md says about 8 teams; teams.py has 10 (5 CLINC domain teams, Te
 - Options: mean of word vectors (spec), LSTM over the sequence, fastText.
 - Decision: gensim word2vec (dim 100, 30 epochs, trained on preprocessed train texts) -> mean vector -> MLP 100-256-n_classes, hand-written SGD loop (lr 0.1, momentum 0.9, batch 64, early stopping patience 15 on val accuracy).
 - Consequence: tiny and fast (2.6 MB, 0.14 ms) but word order is lost, so it is weaker than M1 in-scope; lr/epochs/patience are my choices inside the spec.
+
+## D12 BERT teacher -> DistilBERT student -> ONNX Runtime INT8
+- Context: the homework wants a Transformer plus an efficient (smaller/faster) version of it.
+- Options: quantize BERT directly; distill only; distill, then quantize (spec); torch.quantization.quantize_dynamic.
+- Decision: M3 BERT fine-tuned (3 ep) -> M3s DistilBERT distilled (T=2, 5 ep, lr 5e-5 my choice) -> ONNX (legacy exporter, the default one fixed batch size to 1) -> onnxruntime quantize_dynamic QInt8 (M4). ONNX Runtime, because the PyTorch API is deprecated.
+- Consequence: M3s alone shows the cost of distillation, M4 vs M3s the cost of quantization; M4 is the smallest and fastest Transformer row.

@@ -1,5 +1,5 @@
 # PROGRESS
-Phase: P2 done, next P3 (M3, M3s, M4) | Worklog: worklog/worklog_001.md | Checklist: PLAN_CHECKLIST.md
+Phase: P3 done, next P4 (app.py, failures.csv, plot) | Worklog: worklog/worklog_001.md | Checklist: PLAN_CHECKLIST.md
 Env: Windows 11, i7-12700H 14c/20t, 31.8 GB RAM, RTX 3060 Laptop (CUDA ok), Python 3.12.13 (.venv via uv), torch 2.11.0+cu128
 
 ## Decisions
@@ -13,4 +13,4 @@ Env: Windows 11, i7-12700H 14c/20t, 31.8 GB RAM, RTX 3060 Laptop (CUDA ok), Pyth
 
 ## File map
 config.py | src/logutil.py (rolling log) | src/data.py (splits) | src/teams.py | src/preprocess.py | src/rules.py
-src/evaluate.py (shared eval) | src/m1_tfidf.py | src/m2_ffn.py | tests/test_basic.py, test_data.py, test_pipeline.py | docs/decisions.md | data/appliance.csv | scripts/data_checks.py
+src/evaluate.py (shared eval) | src/m1_tfidf.py | src/m2_ffn.py | tests/test_basic.py, test_data.py, test_pipeline.py | docs/decisions.md | data/appliance.csv | scripts/data_checks.py | src/m3_bert.py src/m4_distill.py src/m4_quantize.py
