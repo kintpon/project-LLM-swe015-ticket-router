@@ -35,7 +35,7 @@ def test_appliance_rows_split_14_3_3():
 
 def test_class_count_equals_distinct_intents():
     train = load_split("train")
-    assert len(label_names()) == train["intent"].nunique() == 156
+    assert len(label_names()) == train["intent"].nunique() == train["label"].nunique()
 
 
 def test_appliance_test_rows_not_near_copies_of_train():

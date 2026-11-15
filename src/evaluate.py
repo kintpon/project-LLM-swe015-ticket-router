@@ -81,7 +81,13 @@ def hardware_line():
                              capture_output=True, text=True).stdout.strip() or platform.processor()
     except OSError:
         cpu = platform.processor()
-    return (f"{cpu} ({os.cpu_count()} logical cores), {platform.platform()}, Python {platform.python_version()}, "
+    try:  # total RAM: Windows first, then Linux (Colab)
+        ps = "[math]::Round((Get-CimInstance Win32_ComputerSystem).TotalPhysicalMemory/1GB,1)"
+        ram = subprocess.run(["powershell", "-NoProfile", "-Command", ps], capture_output=True, text=True).stdout.strip()
+        ram = ram.replace(",", ".") + " GB RAM"
+    except OSError:
+        ram = f"{os.sysconf('SC_PAGE_SIZE') * os.sysconf('SC_PHYS_PAGES') / 2**30:.1f} GB RAM"
+    return (f"{cpu} ({os.cpu_count()} logical cores, {ram}), {platform.platform()}, Python {platform.python_version()}, "
             f"torch {torch.__version__}, onnxruntime {onnxruntime.__version__}; latency on CPU, 4 threads")
 
 

@@ -13,8 +13,12 @@ from src.evaluate import evaluate
 from src.logutil import log
 from src.preprocess import preprocess
 
-VEC_PATH = MODELS_DIR / "m1_vectorizer.joblib"
-CLF_PATH = MODELS_DIR / "m1_classifier.joblib"
+
+
+def paths(smoke=False):
+    """Model files. Smoke runs save under models/smoke/ so they never overwrite the real model."""
+    folder = MODELS_DIR / "smoke" if smoke else MODELS_DIR
+    return folder / "m1_vectorizer.joblib", folder / "m1_classifier.joblib"
 
 
 def clean(texts):
@@ -31,14 +35,16 @@ def train(smoke=False, rows=None):
     vec = TfidfVectorizer(ngram_range=(1, 2), sublinear_tf=True)
     x = vec.fit_transform(clean(df["text"]))
     clf = LogisticRegression(C=10, max_iter=300).fit(x, df["label"])
-    MODELS_DIR.mkdir(exist_ok=True)
-    joblib.dump(vec, VEC_PATH)
-    joblib.dump(clf, CLF_PATH)
+    vec_path, clf_path = paths(smoke)
+    vec_path.parent.mkdir(parents=True, exist_ok=True)
+    joblib.dump(vec, vec_path)
+    joblib.dump(clf, clf_path)
 
 
-def make_predict_proba():
+def make_predict_proba(smoke=False):
     """Load saved files; return predict_proba(raw_texts) -> (n, n_classes) probabilities."""
-    vec, clf = joblib.load(VEC_PATH), joblib.load(CLF_PATH)
+    vec_path, clf_path = paths(smoke)
+    vec, clf = joblib.load(vec_path), joblib.load(clf_path)
     n = len(label_names())
 
     def predict_proba(texts):
@@ -54,5 +60,5 @@ if __name__ == "__main__":
     ap.add_argument("--smoke", action="store_true")
     smoke = ap.parse_args().smoke
     train(smoke)
-    row, _ = evaluate("M1", "tf-idf + LogReg", make_predict_proba(), [VEC_PATH, CLF_PATH], smoke)
+    row, _ = evaluate("M1", "tf-idf + LogReg", make_predict_proba(smoke), paths(smoke), smoke)
     log("m1", f"M1 smoke={smoke} in_scope={row['in_scope_acc']:.4f} oos_recall={row['oos_recall']:.4f}")

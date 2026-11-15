@@ -1,16 +1,15 @@
 """Area B - classical NLP: regex cleaning, model-code extraction, Levenshtein spelling correction."""
 import re
-from collections import Counter
 from functools import lru_cache
 
 CODE_RE = re.compile(r"\b[A-Za-z]{2,3}-?\d{3,5}\b")
 URL_RE = re.compile(r"https?://\S+|www\.\S+")
 EMAIL_RE = re.compile(r"\S+@\S+\.\S+")
-REPEAT_RE = re.compile(r"(.)\1{2,}")
+REPEAT_RE = re.compile(r"([a-z])\1{2,}")  # letters only, so numbers like 1000 stay intact
 
 # product words we are willing to correct towards
 LEXICON = ["dishwasher", "washing", "machine", "oven", "fridge", "refrigerator", "dryer",
-           "freezer", "microwave", "washer", "heating", "warranty", "thermostat"]
+           "freezer", "microwave"]
 
 
 def levenshtein(a, b):
@@ -33,11 +32,13 @@ def correct_token(token, vocab):
 
 
 @lru_cache(maxsize=1)
-def get_vocab(min_count=4):
-    """Training vocabulary: words seen >= min_count times in train (rare typos stay out)."""
+def get_vocab():
+    """Training vocabulary: every word in the CLINC train rows. The appliance rows are left out
+    because they contain deliberate typos ("dishwaser") that must stay correctable."""
     from src.data import load_split
-    words = Counter(t for x in load_split("train")["text"] for t in re.findall(r"[a-z']+", x.lower()))
-    return frozenset(w for w, c in words.items() if c >= min_count)
+    df = load_split("train")
+    texts = df[df["source"] == "clinc"]["text"]
+    return frozenset(t for x in texts for t in re.findall(r"[a-z']+", x.lower()))
 
 
 def preprocess(text, vocab=None):

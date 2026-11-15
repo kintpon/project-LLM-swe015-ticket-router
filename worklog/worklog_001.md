@@ -39,3 +39,9 @@
 ## 2026-11-15 15:55 · P1 · Tests
 - What: tests/test_basic.py (6 tests) and tests/test_data.py (6 tests).
 - Result: pytest -q -> 12 passed; every intent has a team (156 classes, 10 teams).
+
+## 2026-11-15 16:02 · P1 · Bug hunt (user asked) – 6 fixes
+- What: (1) spelling fix corrupted real words (bridge->fridge, vaccine->machine; 53 wrong on CLINC val+test): lexicon back to the spec list, vocab = all CLINC train words -> 20 wrong. (2) repeat-squeeze changed numbers (1000->100): now letters only. (3) small-talk rules swallowed real requests ("thanks my oven is still broken"): rules must match the whole message. (4) --smoke overwrote the real M1 files: smoke now saves to models/smoke/. (5) hardware line had no RAM. (6) test hard-coded 156; logutil path depended on cwd.
+- Why: (1) was caused by my own additions in P1 (extra lexicon words, count>=4 vocab), measured before and after; alternative d<=1 for short words changes the spec, so it is asked to the user.
+- Files: src/preprocess.py, src/rules.py, src/evaluate.py, src/m1_tfidf.py, src/logutil.py, tests/ (+3 tests)
+- Result: pytest 14 passed. M1 retrained (results/results.csv): in-scope 0.7991, oos recall 0.9080, thr 0.45, 40.9 MB, 1.01 ms. The earlier M1 row (0.7973) is replaced.

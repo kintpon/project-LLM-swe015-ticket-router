@@ -4,7 +4,7 @@ from pathlib import Path
 MAX_LINES = 300
 
 
-def log(name, message, log_dir="logs"):
+def log(name, message, log_dir=Path(__file__).resolve().parent.parent / "logs"):
     """Append one line to logs/<name>_001.log; start _002 after 300 lines."""
     Path(log_dir).mkdir(parents=True, exist_ok=True)
     n = 1

@@ -5,7 +5,7 @@ Env: Windows 11, i7-12700H 14c/20t, 31.8 GB RAM, RTX 3060 Laptop (CUDA ok), Pyth
 ## Decisions
 - Python 3.12 venv; CUDA torch since GPU found; latency still measured on CPU, 4 threads
 - Plan ticks in PLAN_CHECKLIST.md (user choice), PDF untouched; token file gitignored, never read
-- Dropped 5 exact-duplicate texts from train; spelling vocab = train words seen >=4 times
+- Dropped 5 exact-duplicate texts from train; spelling vocab = CLINC train words; smoke runs save to models/smoke/
 - M1 appliance acc is 0.0 (low confidence -> Human agent); reported as is
 
 ## File map

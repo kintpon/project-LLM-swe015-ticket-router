@@ -36,10 +36,25 @@ def test_preprocess_corrections_and_edge_inputs():
     assert isinstance(preprocess("a" * 2000, VOCAB)[0], str)  # long input does not crash
 
 
+def test_numbers_are_not_squeezed():
+    assert preprocess("transfer 1000 dollars", VOCAB)[0] == "transfer 1000 dollars"
+
+
+def test_real_words_are_not_corrected_with_train_vocab():
+    # uses the real training vocabulary: common English words must stay as they are
+    for word in ["bridge", "father", "rather", "moved", "vaccine", "asking"]:
+        assert preprocess(word)[0] == word
+
+
 def test_small_talk_rule():
     assert match_rule("Hello!") is not None
     assert match_rule("thanks") is not None
+    assert match_rule("thank you so much") is not None
     assert match_rule("my dishwasher is not draining") is None
+    # a real request that only starts like small talk must reach the model
+    assert match_rule("thanks my oven is still broken") is None
+    assert match_rule("how are you going to fix my oven") is None
+    assert match_rule("good night my fridge is leaking water") is None
 
 
 def test_routing_with_threshold():
