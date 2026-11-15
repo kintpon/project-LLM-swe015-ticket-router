@@ -106,3 +106,9 @@
 - Why: numbers in docs are copied by fill_docs.py from results.md/failures.csv/splits, so nothing is typed by hand; train_all.py runs each step as a subprocess (stops on first failure) instead of importing them, so every script stays runnable alone
 - Upload skips smoke/, cached teacher logits and the fp32 ONNX (app does not need them); rules.py patterns checked: all anchored (^...$), so the earlier re.search note is not a bug
 - Files: train_all.py (+24), scripts/fill_docs.py (+52), scripts/upload_weights.py (+19), docs/*.md, README.md
+
+## 2026-11-15 23:20 · P5 · Done check: fresh environment
+- What: git clone into a scratch folder, README steps literally (uv venv 3.12, uv pip install -r requirements.txt -> torch 2.11.0+cpu), python app.py
+- Why: weights are not on HF yet, so the app files from models/ were copied in (no smoke/, logits, fp32 ONNX); data/splits were rebuilt from the HF dataset in the clone
+- Result: app served on port 7861; dishwasher example via gradio_client gave Human agent, not_draining, 0.231, dishwaher -> dishwasher, DW-6534 (same as main env); pytest 27 passed
+- Open (user): huggingface-cli login + scripts/upload_weights.py, git push; HF download path tested in P6b

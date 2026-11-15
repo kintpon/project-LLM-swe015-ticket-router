@@ -38,10 +38,10 @@ Kaynak: "SWE015 Ödevi – Proje Planı.pdf". Bir madde gerçekten çalıştığ
 - [x] Zor girdiler çökmüyor: boş metin, yalnızca model kodu, Türkçe cümle, çok uzun metin
 
 ## P5 · Dokümanlar ve teslime hazırlık
-- [ ] Mimari diyagram yazıldı ve kodla karşılaştırıldı
-- [ ] slides_material.md ve explain.md hazır
+- [x] Mimari diyagram yazıldı ve kodla karşılaştırıldı
+- [x] slides_material.md ve explain.md hazır
 - [ ] Ağırlıklar Hugging Face'e yüklendi
-- [ ] README temiz ortamda denendi, python app.py açılıyor
+- [x] README temiz ortamda denendi, python app.py açılıyor
 - [ ] Repo GitHub'a gönderildi
 
 ## P6 · Son denetim
