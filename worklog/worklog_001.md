@@ -100,3 +100,9 @@
 - What: re-checked P4 against spec Section 5 and the P4 done check. Called the running app through its HTTP API (gradio_client) on the 4 examples plus empty input; read failures.csv, the plot and make_report.py; checked that M3s and M4 are different models on the app examples.
 - Why: user asked for a check. Correction: the previous entry says tests/test_app.py has 13 cases; the real count is 12 (15 old + 12 = 27 passed).
 - Result: UI path returns the same output as the direct handler call; pytest 27 passed. Example 2: M1 and M2 route to Technical Service, M3/M3s/M4 to Human agent (M3s conf 0.230891, M4 0.230903, threshold 0.65). All 10 rows in failures.csv are Human-agent routings; in 5 of them the predicted intent equals the true one (low confidence). No code changed.
+
+## 2026-11-15 23:03 · P5 · Docs, README, train_all, upload script
+- What: docs/architecture.md (Mermaid, app path + training path), slides_material.md, explain.md (Turkish), README rewritten, train_all.py, scripts/upload_weights.py, scripts/fill_docs.py
+- Why: numbers in docs are copied by fill_docs.py from results.md/failures.csv/splits, so nothing is typed by hand; train_all.py runs each step as a subprocess (stops on first failure) instead of importing them, so every script stays runnable alone
+- Upload skips smoke/, cached teacher logits and the fp32 ONNX (app does not need them); rules.py patterns checked: all anchored (^...$), so the earlier re.search note is not a bug
+- Files: train_all.py (+24), scripts/fill_docs.py (+52), scripts/upload_weights.py (+19), docs/*.md, README.md
