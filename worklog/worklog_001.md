@@ -151,3 +151,7 @@
 - Result: all gates OK on the repo side; open for user: slides, AI-usage slide, video, submission form, revoke the HF token, push of the submission tag
 
 ## 2026-11-16 20:43 · P6 · Push asked: user chose to push commits and the submission tag
+
+## 2026-11-16 21:21 · Docs · Checklist notes for what was done differently
+- What: PLAN_CHECKLIST.md got "Farklı:" notes (local GPU training instead of Colab, 5 teams shown, 10 teams, spelling rules, repo name, HF upload/push done by Claude); new open item: revoke the HF token shared in chat
+- Fix: push decision was numbered D11 in docs/decisions.md, but D11 already existed (M2); renumbered to D13
