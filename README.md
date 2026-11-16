@@ -45,8 +45,8 @@ Tests: `pytest -q` (the app tests are skipped when `models/` is missing).
 1. Runtime → Change runtime type → GPU.
 2. In a cell:
    ```
-   !git clone https://github.com/kintpon/project-LLM.git
-   %cd project-LLM
+   !git clone https://github.com/kintpon/project-LLM-swe015-ticket-router.git
+   %cd project-LLM-swe015-ticket-router
    !pip install -r requirements.txt
    !python train_all.py
    ```

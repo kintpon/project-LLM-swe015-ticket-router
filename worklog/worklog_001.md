@@ -131,3 +131,7 @@
 - Error + fix: first run failed with "No module named 'config'" (script run by path had no repo root on sys.path); added the same sys.path line the other scripts use
 - Result: public repo kintpon/swe015-ticket-router has 14 files (M1, M2, M3, M3s folders, m4_int8.onnx 67.5 MB); no smoke models, logits or fp32 ONNX
 - Open: user should revoke the token shared in chat; GitHub repo not created yet, push pending
+
+## 2026-11-16 20:11 · P5 · GitHub remote set and pushed
+- What: user created the GitHub repo as kintpon/project-LLM-swe015-ticket-router (not project-LLM as in the spec); updated config.py GITHUB_REMOTE and the Colab clone lines in README, added remote origin, pushed master
+- Why: the spec's URL returned "Repository not found"; the user sent a screenshot with the real repo name

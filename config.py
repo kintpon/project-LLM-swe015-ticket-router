@@ -12,7 +12,7 @@ RESULTS_DIR = ROOT / "results"
 LOGS_DIR = ROOT / "logs"
 
 HF_MODEL_REPO = "kintpon/swe015-ticket-router"
-GITHUB_REMOTE = "https://github.com/kintpon/project-LLM.git"
+GITHUB_REMOTE = "https://github.com/kintpon/project-LLM-swe015-ticket-router.git"
 
 OOS_INTENT = "oos"
 HUMAN_TEAM = "Human agent"
