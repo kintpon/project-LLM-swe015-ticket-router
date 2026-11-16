@@ -42,7 +42,7 @@ All scripts use seed 42 and are run in order by `python train_all.py`. Threshold
 - **M1** – tf-idf on word 1–2 grams (sublinear tf), logistic regression with C = 10. Trains in seconds on CPU.
 - **M2** – word2vec trained on our train texts (dim 100, window 5, 30 epochs). A message is the mean of its word vectors (zero vector if no word is known). MLP 100 → 256 → classes with ReLU and dropout 0.2, plain SGD with momentum 0.9 (lr 0.1, batch 64), loss written out with `loss.backward()`; early stopping after 15 epochs without a better validation accuracy.
 - **M3** – `google-bert/bert-base-uncased` fine-tuned for classification: max length 32, lr 3e-5, batch 32, 3 epochs, AdamW with linear warm-up; best epoch kept by validation accuracy. Trained on GPU.
-- **M3s** – `distilbert/distilbert-base-uncased` trained from M3: loss = 0.5·CE(labels) + 0.5·T²·KL(student/T ‖ teacher/T), T = 2, 5 epochs, lr 5e-5. Teacher logits for the train set are computed once and cached.
+- **M3s** – `distilbert/distilbert-base-uncased` trained from M3: loss = 0.5·CE(labels) + 0.5·T²·KL(teacher/T ‖ student/T), T = 2, 5 epochs, lr 5e-5. Teacher logits for the train set are computed once and cached.
 - **M4** – M3s exported to ONNX (legacy exporter), then `quantize_dynamic(..., weight_type=QInt8)`. Runs with ONNX Runtime only, no PyTorch model needed.
 
 ## 4. Results (test split, after routing)
@@ -58,7 +58,7 @@ All scripts use seed 42 and are run in order by `python train_all.py`. Threshold
 
 Hardware: 12th Gen Intel(R) Core(TM) i7-12700H (20 logical cores, 31.8 GB RAM), Windows-11-10.0.26200-SP0, Python 3.12.13, torch 2.11.0+cu128, onnxruntime 1.32.0; latency on CPU, 4 threads
 
-Notes: size = all files needed at inference, tokenizer files excluded. Latency = one message at a time, preprocess -> route, 10 warm-up calls then 200 test messages (same for all models). Metrics are measured on the models alone (small-talk rules not applied). Appliance accuracy covers only 15 test rows (3 per appliance intent), so treat it with caution.
+Notes: size = all files needed at inference, tokenizer files excluded. Latency = one message at a time, preprocess -> route, 10 warm-up calls then 200 test messages (same for all models). Metrics are measured on the models alone (small-talk rules not applied). Appliance accuracy covers only 15 test rows (3 per appliance intent), so treat it with caution. Reproducibility: the M3, M3s and M4 rows come from a training run made before a seeding fix (the new classification head was created before the seed was set; see worklog_001.md), and GPU training is not bit-exact, so re-running train_all.py gives different numbers for these rows.
 <!-- RESULTS-END -->
 
 Plot: `results/accuracy_vs_latency.png`.

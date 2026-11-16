@@ -38,7 +38,7 @@ Train metinleri üzerinde word2vec (100 boyut) eğitilir; mesaj, kelime vektörl
 - **S: Neden max_length 32?** C: CLINC mesajları kısa; 32 token neredeyse hepsine yetiyor ve hızı artırıyor.
 
 ## M3s – `src/m4_distill.py` (alan D, adım 1)
-DistilBERT (~67M parametre) öğrenci, M3 öğretmenden öğrenir: kayıp = 0.5·CE(etiket) + 0.5·T²·KL(öğrenci/T ‖ öğretmen/T), T = 2, 5 epoch. Öğretmen çıktıları train için bir kez hesaplanıp kaydedildi.
+DistilBERT (~67M parametre) öğrenci, M3 öğretmenden öğrenir: kayıp = 0.5·CE(etiket) + 0.5·T²·KL(öğretmen/T ‖ öğrenci/T), T = 2, 5 epoch. Öğretmen çıktıları train için bir kez hesaplanıp kaydedildi.
 - **S: Sıcaklık T ne işe yarıyor?** C: Olasılıkları yumuşatır; öğrenci sadece doğru sınıfı değil, öğretmenin hangi sınıfları birbirine benzer bulduğunu da öğrenir. T² ile çarpmak gradyan ölçeğini dengeler.
 - **S: Distilasyon ne kazandırdı?** C: Tabloda M3 ile M3s'i karşılaştır: doğruluk neredeyse aynı, gecikme ve boyut belirgin şekilde düşük.
 

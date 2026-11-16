@@ -56,7 +56,8 @@ def val_accuracy(model, tok, val):
 
 
 def train_model(model, tok, train, val, epochs, lr, save_to, teacher_logits=None, T=2.0):
-    """Hand-written loop. With teacher_logits: loss = 0.5*CE + 0.5*T^2*KL(student/T || teacher/T)."""
+    """Hand-written loop. With teacher_logits: loss = 0.5*CE + 0.5*T^2*KL(teacher/T || student/T).
+    F.kl_div(log q_student, p_teacher) computes KL(teacher || student): the standard Hinton distillation loss."""
     set_seed()
     model.to(DEVICE)
     texts, labels = train["text"].tolist(), torch.tensor(train["label"].to_numpy())

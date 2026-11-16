@@ -117,3 +117,11 @@
 - What: P5 finished and committed (b14c13f docs/scripts, 82dab0c fresh-env check); session closed by user
 - Next: P6a code review (docs/code_review.md). User to do first: huggingface-cli login + python scripts/upload_weights.py, git push
 - Note: old app.py server still running on port 7860 (user stops it)
+
+## 2026-11-16 19:53 · P6a · Bug review (report only), then fixes 1 and 2 (user choice)
+- What: read all source files and reported 7 findings without changes; user chose to fix #1 and #2 only.
+- Fix 1: KL direction text. Code computes F.kl_div(log q_student, p_teacher) = KL(teacher || student) (standard Hinton); comments in m3_bert.py, m4_distill.py and docs (explain, slides_material) said KL(student || teacher). Text corrected, code unchanged. CLAUDE.md has the same wording and was not edited.
+- Fix 2: write_results notes now say M3/M3s/M4 rows come from the run before the seeding fix and are not exactly reproducible; results.md rebuilt from the existing results.csv (csv byte-identical), fill_docs copied it to README/slides.
+- Open findings (not fixed, user decision): Colab mixes hardware in one table; code regex catches flight numbers (66 CLINC rows); email with a code-like name is split; ensure_models checks only m4_int8.onnx.
+- Files: src/m3_bert.py, src/m4_distill.py, src/evaluate.py (+3), docs/explain.md, docs/slides_material.md, README.md, results/results.md
+- Result: pytest 27 passed

@@ -1,5 +1,5 @@
 """Area D - Efficient model, step 1: knowledge distillation. M3s = DistilBERT student (fp32) learns from the
-fine-tuned BERT teacher (M3). loss = 0.5*CE + 0.5*T^2*KL(student/T || teacher/T), T = 2, 5 epochs."""
+fine-tuned BERT teacher (M3). loss = 0.5*CE + 0.5*T^2*KL(teacher/T || student/T), T = 2, 5 epochs."""
 import argparse
 import time
 

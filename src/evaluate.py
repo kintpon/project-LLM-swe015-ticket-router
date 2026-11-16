@@ -132,5 +132,8 @@ def write_results(row, thr):
     notes = ("\n\nHardware: " + hardware_line() + "\n\nNotes: size = all files needed at inference, tokenizer files "
              "excluded. Latency = one message at a time, preprocess -> route, 10 warm-up calls then 200 test messages "
              "(same for all models). Metrics are measured on the models alone (small-talk rules not applied). "
-             "Appliance accuracy covers only 15 test rows (3 per appliance intent), so treat it with caution.\n")
+             "Appliance accuracy covers only 15 test rows (3 per appliance intent), so treat it with caution. "
+             "Reproducibility: the M3, M3s and M4 rows come from a training run made before a seeding fix "
+             "(the new classification head was created before the seed was set; see worklog_001.md), and GPU "
+             "training is not bit-exact, so re-running train_all.py gives different numbers for these rows.\n")
     (RESULTS_DIR / "results.md").write_text("\n".join(lines) + notes, encoding="utf-8")
