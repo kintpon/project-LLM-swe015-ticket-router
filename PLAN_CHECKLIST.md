@@ -42,7 +42,7 @@ Kaynak: "SWE015 Ödevi – Proje Planı.pdf". Bir madde gerçekten çalıştığ
 - [x] slides_material.md ve explain.md hazır
 - [x] Ağırlıklar Hugging Face'e yüklendi
 - [x] README temiz ortamda denendi, python app.py açılıyor
-- [ ] Repo GitHub'a gönderildi
+- [x] Repo GitHub'a gönderildi
 
 ## P6 · Son denetim
 - [ ] Gereksinim tablosundaki her madde OK
@@ -53,11 +53,11 @@ Kaynak: "SWE015 Ödevi – Proje Planı.pdf". Bir madde gerçekten çalıştığ
 - [ ] submission etiketi (git tag) atıldı
 
 ## Senin tarafında kalanlar
-- [ ] GitHub'da boş bir repo aç (public ya da hocayla paylaşılmış)
+- [x] GitHub'da boş bir repo aç (public ya da hocayla paylaşılmış)
 - [x] Hugging Face hesabı aç ve huggingface-cli login ile giriş yap
 - [ ] Colab'da eğitimi çalıştır ve models/ klasörünü indir
 - [x] Ağırlıkları scripts/upload_weights.py ile Hugging Face'e yükle
-- [ ] Repoyu GitHub'a gönder (git push)
+- [x] Repoyu GitHub'a gönder (git push)
 - [ ] docs/explain.md dosyasını okuyup her bileşeni kendi cümlelerinle anlatabildiğini dene
 - [ ] Sunumu docs/slides_material.md içindeki malzemeyle hazırla
 - [ ] AI kullanım slaydını kendi ifadenle yaz (Claude Code'un neyi yaptığını açıkça belirt)
