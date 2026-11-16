@@ -161,3 +161,5 @@
 - Why: user will build the slides with Claude chat and asked for one text file with everything needed; asked about language, user chose all English
 - Files: docs/presentation_brief.md (new), scripts/fill_docs.py (+3: also fills DATA and RESULTS in the brief)
 - Result: fill_docs ran; tables in the brief equal results/results.md
+
+## 2026-11-16 23:08 · Git · Pushed checklist notes and presentation brief (user request); submission tag unchanged
