@@ -125,3 +125,9 @@
 - Open findings (not fixed, user decision): Colab mixes hardware in one table; code regex catches flight numbers (66 CLINC rows); email with a code-like name is split; ensure_models checks only m4_int8.onnx.
 - Files: src/m3_bert.py, src/m4_distill.py, src/evaluate.py (+3), docs/explain.md, docs/slides_material.md, README.md, results/results.md
 - Result: pytest 27 passed
+
+## 2026-11-16 20:06 · P5 · Weights uploaded to Hugging Face
+- What: user gave an HF token in chat; logged in (stored only in the HF cache, never in repo files); ran scripts/upload_weights.py
+- Error + fix: first run failed with "No module named 'config'" (script run by path had no repo root on sys.path); added the same sys.path line the other scripts use
+- Result: public repo kintpon/swe015-ticket-router has 14 files (M1, M2, M3, M3s folders, m4_int8.onnx 67.5 MB); no smoke models, logits or fp32 ONNX
+- Open: user should revoke the token shared in chat; GitHub repo not created yet, push pending

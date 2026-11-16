@@ -1,5 +1,5 @@
 # PROGRESS
-Phase: P5 done (except HF upload + push: user), next P6a code review | Worklog: worklog/worklog_001.md | Checklist: PLAN_CHECKLIST.md
+Phase: P5 done, HF weights uploaded; open: GitHub push (user creates repo), then P6a | Worklog: worklog/worklog_001.md | Checklist: PLAN_CHECKLIST.md
 Env: Windows 11, i7-12700H 14c/20t, 31.8 GB RAM, RTX 3060 Laptop (CUDA ok), Python 3.12.13 (.venv via uv), torch 2.11.0+cu128
 
 ## Decisions

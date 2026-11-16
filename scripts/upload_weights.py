@@ -1,9 +1,14 @@
 """Upload the trained models/ folder to the public Hugging Face repo named in config.py.
 Run `huggingface-cli login` yourself first; this script never reads or stores a token.
 Only the files the app needs are uploaded (no smoke models, no cached teacher logits, no fp32 ONNX)."""
-from huggingface_hub import HfApi
+import sys
+from pathlib import Path
 
-from config import HF_MODEL_REPO, MODELS_DIR
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # so `python scripts/upload_weights.py` finds config.py
+
+from huggingface_hub import HfApi  # noqa: E402
+
+from config import HF_MODEL_REPO, MODELS_DIR  # noqa: E402
 
 SKIP = ["smoke/*", "m3_train_logits.npy", "m3s_fp32.onnx"]
 
