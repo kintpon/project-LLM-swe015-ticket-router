@@ -140,3 +140,12 @@
 - What: docs/code_review.md: 5 checks (secrets, leakage, label mapping, same preprocessing, readability) + 12-row finding table
 - Why: spec P6a; findings come from today's bug review, the P3 bug hunt and the upload-script error
 - Result: no secret in git history, no test leakage; 8 findings fixed, 4 low/medium-low left open by user decision
+
+## 2026-11-16 20:41 · P6b · Release checklist
+- What: pytest; git ls-files size/path check; fresh clone from GitHub into a scratch folder, README steps literally (uv venv 3.12, uv pip install -> torch 2.11.0+cpu), python app.py with NO models/ folder
+- Result: pytest 27 passed; no tracked file >5 MB, nothing from models/, logs/, data/splits/; app downloaded 14 files from HF (2:19 min), served on 7860; via gradio_client: savings -> Banking & Cards balance 0.816, dishwasher -> Human agent not_draining 0.231 (dishwaher -> dishwasher, DW-6534), football -> oos Human agent, hello there -> rules, empty -> prompt. Same as main env. results.md has all 5 rows + hardware line
+- Note: "Running on" line was not in the log yet (stdout buffered to file); port found with netstat (PID matched the log)
+
+## 2026-11-16 20:41 · P6c · Final audit
+- What: Section 0 gates checked against files (table given to user in chat); code max 140 lines (m3_bert.py), worklog 1 file, logs max 39 lines; decimal numbers in README/docs outside the script-filled blocks: only versions (Python 3.12/3.14, CC BY 3.0); no hand-written % or ratios; every file named in docs/architecture.md exists
+- Result: all gates OK on the repo side; open for user: slides, AI-usage slide, video, submission form, revoke the HF token, push of the submission tag

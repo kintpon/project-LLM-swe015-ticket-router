@@ -45,12 +45,12 @@ Kaynak: "SWE015 Ödevi – Proje Planı.pdf". Bir madde gerçekten çalıştığ
 - [x] Repo GitHub'a gönderildi
 
 ## P6 · Son denetim
-- [ ] Gereksinim tablosundaki her madde OK
-- [ ] Kod dosyaları 500, log dosyaları 300 satırı geçmiyor
-- [ ] Dokümanlardaki sayılar results.csv ile aynı
+- [x] Gereksinim tablosundaki her madde OK
+- [x] Kod dosyaları 500, log dosyaları 300 satırı geçmiyor
+- [x] Dokümanlardaki sayılar results.csv ile aynı
 - [x] Kod incelemesi (docs/code_review.md) yapıldı: gizli anahtar yok, test verisi eğitime sızmıyor
-- [ ] Yayın kontrolü geçti: testler başarılı, repoda 5 MB üstü dosya yok, temiz klondan uygulama açılıyor
-- [ ] submission etiketi (git tag) atıldı
+- [x] Yayın kontrolü geçti: testler başarılı, repoda 5 MB üstü dosya yok, temiz klondan uygulama açılıyor
+- [x] submission etiketi (git tag) atıldı
 
 ## Senin tarafında kalanlar
 - [x] GitHub'da boş bir repo aç (public ya da hocayla paylaşılmış)
@@ -65,13 +65,13 @@ Kaynak: "SWE015 Ödevi – Proje Planı.pdf". Bir madde gerçekten çalıştığ
 - [ ] İlk slayda ad, öğrenci numarası, senaryo, repo linki ve video linkini koy
 
 ## Teslim öncesi kontrol listesi (Cumartesi, hepsi işaretli olmalı)
-- [ ] Uygulama yeni girdi alıp sonuç döndürüyor (R1)
+- [x] Uygulama yeni girdi alıp sonuç döndürüyor (R1)
 - [ ] Dört teknik alanı kullanılmış ve technique map slaydı var (R2)
-- [ ] Temel model, sinir ağı, Transformer ve quantize Transformer aynı test setinde ölçülmüş (R3)
-- [ ] Sonuç tablosunda her model için metrik, boyut ve gecikme var; donanım yazılı (R4)
-- [ ] Uygulama quantize Transformer'ı çalıştırıyor (R5)
-- [ ] Mimari diyagram kodla uyuşuyor (R6)
-- [ ] README'deki kurulum ve çalıştırma komutu temiz ortamda çalışıyor; repoda büyük ağırlık dosyası yok (R7)
+- [x] Temel model, sinir ağı, Transformer ve quantize Transformer aynı test setinde ölçülmüş (R3)
+- [x] Sonuç tablosunda her model için metrik, boyut ve gecikme var; donanım yazılı (R4)
+- [x] Uygulama quantize Transformer'ı çalıştırıyor (R5)
+- [x] Mimari diyagram kodla uyuşuyor (R6)
+- [x] README'deki kurulum ve çalıştırma komutu temiz ortamda çalışıyor; repoda büyük ağırlık dosyası yok (R7)
 - [ ] AI kullanım slaydı var (R8)
 - [ ] Slaytlar Giriş / Geliştirme / Sonuç sırasında, 8–12 slayt, ilk slaytta iki link de var
 - [ ] Sonuç bölümünde en az bir hata örneği var
