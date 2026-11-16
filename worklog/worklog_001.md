@@ -155,3 +155,9 @@
 ## 2026-11-16 21:21 · Docs · Checklist notes for what was done differently
 - What: PLAN_CHECKLIST.md got "Farklı:" notes (local GPU training instead of Colab, 5 teams shown, 10 teams, spelling rules, repo name, HF upload/push done by Claude); new open item: revoke the HF token shared in chat
 - Fix: push decision was numbered D11 in docs/decisions.md, but D11 already existed (M2); renumbered to D13
+
+## 2026-11-16 21:30 · Docs · Presentation brief for building slides in Claude chat
+- What: docs/presentation_brief.md (English, 220 lines): rules for the slide assistant (only copy numbers, 8-12 slides, mandatory items), project summary, data, architecture, technique map, results, failures, limitations, AI-usage draft, 10-slide outline, 2-minute video script, likely questions
+- Why: user will build the slides with Claude chat and asked for one text file with everything needed; asked about language, user chose all English
+- Files: docs/presentation_brief.md (new), scripts/fill_docs.py (+3: also fills DATA and RESULTS in the brief)
+- Result: fill_docs ran; tables in the brief equal results/results.md

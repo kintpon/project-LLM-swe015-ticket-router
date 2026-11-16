@@ -1,7 +1,8 @@
 """Copy numbers into the docs so no number is typed by hand.
 Fills the blocks between <!-- NAME-START --> / <!-- NAME-END --> markers:
   docs/slides_material.md: DATA (rows per split), RESULTS (results/results.md), FAILURES (results/failures.csv)
-  README.md:               RESULTS (results/results.md)"""
+  README.md:               RESULTS (results/results.md)
+  docs/presentation_brief.md: DATA, RESULTS"""
 import re
 import sys
 from pathlib import Path
@@ -47,4 +48,6 @@ if __name__ == "__main__":
     results = (RESULTS_DIR / "results.md").read_text(encoding="utf-8").strip()
     fill(ROOT / "docs" / "slides_material.md", dict(DATA=data_block(), RESULTS=results, FAILURES=failures_block()))
     fill(ROOT / "README.md", dict(RESULTS=results))
-    print("filled docs/slides_material.md (DATA, RESULTS, FAILURES) and README.md (RESULTS)")
+    fill(ROOT / "docs" / "presentation_brief.md", dict(DATA=data_block(), RESULTS=results))
+    print("filled docs/slides_material.md (DATA, RESULTS, FAILURES), README.md (RESULTS), "
+          "docs/presentation_brief.md (DATA, RESULTS)")
