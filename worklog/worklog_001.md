@@ -149,3 +149,5 @@
 ## 2026-11-16 20:41 · P6c · Final audit
 - What: Section 0 gates checked against files (table given to user in chat); code max 140 lines (m3_bert.py), worklog 1 file, logs max 39 lines; decimal numbers in README/docs outside the script-filled blocks: only versions (Python 3.12/3.14, CC BY 3.0); no hand-written % or ratios; every file named in docs/architecture.md exists
 - Result: all gates OK on the repo side; open for user: slides, AI-usage slide, video, submission form, revoke the HF token, push of the submission tag
+
+## 2026-11-16 20:43 · P6 · Push asked: user chose to push commits and the submission tag

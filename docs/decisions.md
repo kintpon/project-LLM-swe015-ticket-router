@@ -41,3 +41,6 @@ Context: CLAUDE.md says about 8 teams; teams.py has 10 (5 CLINC domain teams, Te
 - Options: quantize BERT directly; distill only; distill, then quantize (spec); torch.quantization.quantize_dynamic.
 - Decision: M3 BERT fine-tuned (3 ep) -> M3s DistilBERT distilled (T=2, 5 ep, lr 5e-5 my choice) -> ONNX (legacy exporter, the default one fixed batch size to 1) -> onnxruntime quantize_dynamic QInt8 (M4). ONNX Runtime, because the PyTorch API is deprecated.
 - Consequence: M3s alone shows the cost of distillation, M4 vs M3s the cost of quantization; M4 is the smallest and fastest Transformer row.
+
+## D11 · Pushing the final version
+Context: after P6 the last commits and the `submission` tag were only local. Options: push commits and tag; commits only; do not push yet. Decision (user): push commits and the tag. Consequence: GitHub holds the known-good submission version under the tag `submission`.
