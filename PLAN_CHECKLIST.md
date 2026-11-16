@@ -48,7 +48,7 @@ Kaynak: "SWE015 Ödevi – Proje Planı.pdf". Bir madde gerçekten çalıştığ
 - [ ] Gereksinim tablosundaki her madde OK
 - [ ] Kod dosyaları 500, log dosyaları 300 satırı geçmiyor
 - [ ] Dokümanlardaki sayılar results.csv ile aynı
-- [ ] Kod incelemesi (docs/code_review.md) yapıldı: gizli anahtar yok, test verisi eğitime sızmıyor
+- [x] Kod incelemesi (docs/code_review.md) yapıldı: gizli anahtar yok, test verisi eğitime sızmıyor
 - [ ] Yayın kontrolü geçti: testler başarılı, repoda 5 MB üstü dosya yok, temiz klondan uygulama açılıyor
 - [ ] submission etiketi (git tag) atıldı
 

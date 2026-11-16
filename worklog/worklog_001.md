@@ -135,3 +135,8 @@
 ## 2026-11-16 20:11 · P5 · GitHub remote set and pushed
 - What: user created the GitHub repo as kintpon/project-LLM-swe015-ticket-router (not project-LLM as in the spec); updated config.py GITHUB_REMOTE and the Colab clone lines in README, added remote origin, pushed master
 - Why: the spec's URL returned "Repository not found"; the user sent a screenshot with the real repo name
+
+## 2026-11-16 20:28 · P6a · Code review written
+- What: docs/code_review.md: 5 checks (secrets, leakage, label mapping, same preprocessing, readability) + 12-row finding table
+- Why: spec P6a; findings come from today's bug review, the P3 bug hunt and the upload-script error
+- Result: no secret in git history, no test leakage; 8 findings fixed, 4 low/medium-low left open by user decision
